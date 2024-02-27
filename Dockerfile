@@ -22,8 +22,8 @@ RUN apk add --no-cache \
       ttf-freefont
 
 COPY . .
-RUN pnpm i
-RUN pnpm build
+RUN npm i
+RUN npm run build
 
 #Etapa de producción
 FROM builder as deploy
@@ -31,5 +31,5 @@ FROM builder as deploy
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/package.json /app/pnpm-lock.yaml ./
 
-RUN pnpm install --frozen-lockfile --production
+RUN npm install --frozen-lockfile --production
 CMD ["npm", "start"]

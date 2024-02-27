@@ -1,7 +1,7 @@
 import BotWhatsapp from '@bot-whatsapp/bot';
 import { ChatCompletionMessageParam } from 'openai/resources';
 import { run, runDetermine } from 'src/services/openai';
-import chatbotFlow from './chatbot.flow';
+
 
 /**
  * Un flujo conversacion que es por defecto cunado no se contgiene palabras claves en otros flujos
@@ -18,9 +18,6 @@ export default BotWhatsapp.addKeyword(BotWhatsapp.EVENTS.WELCOME)
                 return 
             }
 
-            if(ai.toLowerCase().includes('chatbot')){
-                return gotoFlow(chatbotFlow)
-            }
             
 
             /**..... */
